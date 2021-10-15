@@ -24,16 +24,3 @@ Filter.propeTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
 };
-
-// redux
-
-// const mapStateToProps = (state) => ({
-//   value: state.contacts.filter,
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   onChange: (event) => dispatch(actions.filterContact(event.currentTarget.value))
-
-// })
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Filter);

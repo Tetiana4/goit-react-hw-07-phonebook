@@ -82,11 +82,3 @@ export default ContactForm;
 ContactForm.propTypes = {
   propSubmit: PropTypes.func,
 };
-
-// redux
-
-// const mapDispatchToProps = (dispatch) =>({
-//   propSubmit: value => dispatch(actions.addContact(value)),
-// })
-
-// export default connect(null, mapDispatchToProps)(ContactForm);

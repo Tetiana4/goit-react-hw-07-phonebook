@@ -28,16 +28,3 @@ ContactList.propeTypes = {
   contacts: PropTypes.array,
   onDelete: PropTypes.func,
 };
-
-// redux
-
-// const mapStateToProps = ({ contacts: { contacts, filter }}) => ({
-//   contacts: getVisibleList(contacts, filter),
-
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   onDelete: (value) => dispatch(actions.deleteContact(value))
-//  });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(ContactList)

@@ -38,10 +38,3 @@ const store = configureStore({
 const persistor = persistStore(store);
 // eslint-disable-next-line import/no-anonymous-default-export
 export default { store, persistor };
-
-// redux
-
-//  const rootReducer = combineReducers({
-//   contacts: reducer,
-// });
-// const store = createStore(rootReducer, composeWithDevTools());
