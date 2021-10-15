@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
-import reducer from './reducer';
+import reducer from './reducers';
 import {
   persistStore,
   persistReducer,
@@ -28,13 +28,11 @@ const middleware = [
   logger,
 ];
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     contacts: persistReducer(contactPersistConfig, reducer),
   },
   middleware,
 });
 
-const persistor = persistStore(store);
-// eslint-disable-next-line import/no-anonymous-default-export
-export default { store, persistor };
+export const persistor = persistStore(store);
