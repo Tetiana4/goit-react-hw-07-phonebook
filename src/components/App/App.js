@@ -1,6 +1,6 @@
 import ContactForm from '../ContactForm/ContactForm';
 import Filter from '../Filter/Filter';
-import ContactList from '../ContactList/ContactList';
+// import ContactList from '../ContactList/ContactList';
 import { Container, Title } from './App.styled';
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
       <h2>Contacts</h2>
       <p>Find contacts by name</p>
       <Filter />
-      <ContactList />
+      {/* <ContactList /> */}
     </Container>
   );
 }

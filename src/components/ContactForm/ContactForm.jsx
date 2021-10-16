@@ -3,6 +3,13 @@ import { useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
+import { Spinner } from '../../helpers/Spinner';
+import {
+  useFetchContactsQuery,
+  useDeleteContactMutation,
+} from '../../redux/contactsSlice';
+import ContactList from '../ContactList/ContactList';
+
 import { Label, Button, Input } from './ContactForm.styled';
 
 function ContactForm() {
@@ -11,6 +18,9 @@ function ContactForm() {
 
   const nameInputId = uuidv4();
   const numberInputId = uuidv4();
+
+  const { data: contacts, isFetching } = useFetchContactsQuery(name);
+  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
 
   const dispatch = useDispatch();
   const propSubmit = value => dispatch(actions.addContact(value));
@@ -39,7 +49,8 @@ function ContactForm() {
     propSubmit({ name, number });
     resetForm();
   };
-
+  console.log('data: ', contacts);
+  console.log('isFetching: ', isFetching);
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -72,6 +83,14 @@ function ContactForm() {
           />
         </Label>
         <Button type="submit">Add contact</Button>
+        {isFetching && <Spinner />}
+        {contacts && (
+          <ContactList
+            contacts={contacts}
+            onDelete={deleteContact}
+            deleting={isDeleting}
+          />
+        )}
       </form>
     </div>
   );
