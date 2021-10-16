@@ -1,29 +1,16 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import * as actions from '../../redux/actions';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
+import { useAddContactMutation } from '../../redux/contactsSlice';
 import { Spinner } from '../../helpers/Spinner';
-import {
-  useFetchContactsQuery,
-  useDeleteContactMutation,
-} from '../../redux/contactsSlice';
-import ContactList from '../ContactList/ContactList';
-
 import { Label, Button, Input } from './ContactForm.styled';
 
 function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-
+  const [addContact, { isLoading }] = useAddContactMutation();
   const nameInputId = uuidv4();
   const numberInputId = uuidv4();
-
-  const { data: contacts, isFetching } = useFetchContactsQuery(name);
-  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
-
-  const dispatch = useDispatch();
-  const propSubmit = value => dispatch(actions.addContact(value));
 
   const handleChange = event => {
     const { name, value } = event.currentTarget;
@@ -46,11 +33,10 @@ function ContactForm() {
     };
 
     event.preventDefault();
-    propSubmit({ name, number });
+    addContact({ name, number });
     resetForm();
   };
-  console.log('data: ', contacts);
-  console.log('isFetching: ', isFetching);
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -82,15 +68,7 @@ function ContactForm() {
             id={numberInputId}
           />
         </Label>
-        <Button type="submit">Add contact</Button>
-        {isFetching && <Spinner />}
-        {contacts && (
-          <ContactList
-            contacts={contacts}
-            onDelete={deleteContact}
-            deleting={isDeleting}
-          />
-        )}
+        <Button type="submit">{isLoading ? <Spinner /> : 'Add contact'}</Button>
       </form>
     </div>
   );
