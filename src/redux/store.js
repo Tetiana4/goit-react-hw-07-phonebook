@@ -9,7 +9,6 @@ const contactPersistConfig = {
   storage,
   blackList: ['filter'],
 };
-
 export const store = configureStore({
   reducer: {
     contacts: persistReducer(contactPersistConfig, reducer),

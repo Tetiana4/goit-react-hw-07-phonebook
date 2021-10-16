@@ -1,26 +1,26 @@
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// import { List, ListItem, Button } from './ContactList.styled';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { ListItem, Button } from './ContactListItem.styled';
+import { useDeleteContactMutation } from '../../redux/contactsSlice';
 
-// const ContactList = ({ contacts, onDelete, deleting }) => {
+const ContactListItem = ({ id, name, number }) => {
+  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
 
-//   return (
-//     <List>
-//       {contacts.map(({ id, name, number }) => (
-//         <ListItem key={id}>
-//           {name}: {number}
-//           <Button onClick={() => onDelete(id)}>
-//             {deleting ? 'Deleting...' : 'Delete'}
-//           </Button>
-//         </ListItem>
-//       ))}
-//     </List>
-//   );
-// };
+  return (
+    <ListItem key={id}>
+      <span>
+        {name}: {number}
+      </span>
+      <Button onClick={() => deleteContact(id)}>
+        {isDeleting ? 'Deleting...' : 'Delete'}
+      </Button>
+    </ListItem>
+  );
+};
 
-// export default ContactList;
+export default ContactListItem;
 
-// ContactList.propeTypes = {
-//   contacts: PropTypes.array,
-//   onDelete: PropTypes.func,
-// };
+ContactListItem.propeTypes = {
+  contacts: PropTypes.array,
+  onDelete: PropTypes.func,
+};
