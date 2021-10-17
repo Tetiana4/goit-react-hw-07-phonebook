@@ -1,5 +1,5 @@
-export const getContacts = state => state.contacts.contacts;
-export const getFilter = state => state.contacts.filter;
+export const getContacts = state => state.contacts;
+export const getFilter = state => state.filter;
 
 export const getVisibleList = state => {
   const contacts = getContacts(state);
