@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDeleteContactMutation } from '../../redux/contactSlice';
 import { ListItem, Button } from './ContactListItem.styled';
-import { useDeleteContactMutation } from '../../redux/contactsSlice';
 
 const ContactListItem = ({ id, name, number }) => {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
@@ -21,6 +21,7 @@ const ContactListItem = ({ id, name, number }) => {
 export default ContactListItem;
 
 ContactListItem.propeTypes = {
-  contacts: PropTypes.array,
-  onDelete: PropTypes.func,
+  id: PropTypes.number,
+  name: PropTypes.string,
+  number: PropTypes.number,
 };
