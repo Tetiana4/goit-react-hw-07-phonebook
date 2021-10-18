@@ -1,10 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 import ContactListItem from '../ContactListItem/ContactListItem';
-import { useFetchContactsQuery } from '../../redux/contactsSlice';
-import { List } from './ContactList.styled';
+import { useFetchContactsQuery } from '../../redux/contactSlice';
 import { getFilter } from '../../redux/selectors';
+import { List } from './ContactList.styled';
 
 const ContactList = () => {
   const { data: contactList } = useFetchContactsQuery();
@@ -23,9 +22,3 @@ const ContactList = () => {
 };
 
 export default ContactList;
-
-ContactList.propeTypes = {
-  contacts: PropTypes.array,
-  onDelete: PropTypes.func,
-}; //  {isFetching && <Spinner />}
-//       {contacts && <ContactList contacts={contacts} />}
