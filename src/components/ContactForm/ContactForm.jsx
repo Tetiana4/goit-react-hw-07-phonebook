@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
-import { useAddContactMutation } from '../../redux/contactsSlice';
+import { useAddContactMutation } from '../../redux/contactSlice';
 import { Spinner } from '../../helpers/Spinner';
 import { Label, Button, Input } from './ContactForm.styled';
 
@@ -14,16 +13,7 @@ function ContactForm() {
 
   const handleChange = event => {
     const { name, value } = event.currentTarget;
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'number':
-        setNumber(value);
-        break;
-      default:
-        return;
-    }
+    name === 'name' ? setName(value) : setNumber(value);
   };
 
   const handleSubmit = event => {
@@ -75,7 +65,3 @@ function ContactForm() {
 }
 
 export default ContactForm;
-
-ContactForm.propTypes = {
-  propSubmit: PropTypes.func,
-};
