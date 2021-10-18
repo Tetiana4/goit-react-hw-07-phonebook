@@ -1,14 +1,23 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import ContactListItem from '../ContactListItem/ContactListItem';
+import { useFetchContactsQuery } from '../../redux/contactsSlice';
 import { List } from './ContactList.styled';
+import { getFilter } from '../../redux/selectors';
 
-const ContactList = ({ contacts }) => {
+const ContactList = () => {
+  const { data: contactList } = useFetchContactsQuery();
+  const filterValue = useSelector(state => getFilter(state));
+  const contacts = contactList?.filter(contact =>
+    contact.name.toLowerCase().includes(filterValue.toLowerCase()),
+  );
   return (
     <List>
-      {contacts.map(contact => (
-        <ContactListItem key={contact.id} {...contact} />
-      ))}
+      {contactList &&
+        contacts.map(contact => (
+          <ContactListItem key={contact.id} {...contact} />
+        ))}
     </List>
   );
 };
@@ -18,4 +27,5 @@ export default ContactList;
 ContactList.propeTypes = {
   contacts: PropTypes.array,
   onDelete: PropTypes.func,
-};
+}; //  {isFetching && <Spinner />}
+//       {contacts && <ContactList contacts={contacts} />}
