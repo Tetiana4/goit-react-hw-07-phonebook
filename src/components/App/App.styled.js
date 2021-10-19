@@ -5,8 +5,8 @@ export const Container = styled.div`
   padding: 20px 20px;
   width: 400px;
 
-  text-align: center;
   justify-content: center;
+  text-align: center;
   border-radius: 10px;
   border: 3px solid #ce6a6a;
   background-color: #ec9f9f;
