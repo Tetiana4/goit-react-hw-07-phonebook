@@ -1,4 +1,4 @@
-export { getFilter } from './selectors';
+export { getFilter, getVisibleList } from './selectors';
 export {
   useFetchContactsQuery,
   useAddContactMutation,
