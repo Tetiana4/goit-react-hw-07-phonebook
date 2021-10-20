@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../redux/actions';
-import { getFilter } from '../../redux/selectors';
+import { filterContact } from '../../redux/Contacts';
+import { getFilter } from '../../redux/Contacts';
 
 const Filter = () => {
   const value = useSelector(getFilter);
   const dispatch = useDispatch();
   const onChangeChandler = e => {
-    dispatch(actions.filterContact(e.currentTarget.value));
+    dispatch(filterContact(e.currentTarget.value));
   };
 
   return (

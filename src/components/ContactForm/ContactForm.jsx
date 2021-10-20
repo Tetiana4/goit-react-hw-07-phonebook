@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useAddContactMutation } from '../../redux/contactSlice';
-import { Spinner } from '../../helpers/Spinner';
+import { useAddContactMutation } from '../../redux/Contacts';
+import { Spinner } from '../../Spinner/Spinner';
 import { Label, Button, Input } from './ContactForm.styled';
 
 function ContactForm() {
