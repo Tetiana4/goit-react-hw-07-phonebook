@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import ContactListItem from '../ContactListItem/ContactListItem';
-import { useFetchContactsQuery } from '../../redux/Contacts';
-import { getFilter, getVisibleList } from '../../redux/Contacts';
+import { useFetchContactsQuery } from '../../redux/contacts';
+import { getFilter, getVisibleList } from '../../redux/contacts';
 import { List } from './ContactList.styled';
 
 const ContactList = () => {
